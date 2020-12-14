@@ -5,39 +5,12 @@ from skimage.color import rgb2gray
 from PIL import Image
 import math
 from sklearn.metrics import mean_squared_error
-from BinaryImageSample import Data
 from convEncoder import *
 
 def HammingDistance(a,b):
     return np.sum(np.square(a-b))
 
 def ViterbiDecoder(DeModulatedStream,mu):
-    # Look-up Table for State Machine
-    '''
-    State_Table = [
-            [0, 0, [0,0], 0],
-            [0, 0, [1,1], 1],
-            [1, 0, [1,0], 2],
-            [1, 0, [0,1], 3],
-            [2, 1, [1,1], 0],
-            [2, 1, [0,0], 1],
-            [3, 1, [0,1], 2],
-            [3, 1, [1,0], 3]
-    ]
-    '''
-    
-    # MIT's State Table (Type-1)
-    # State_Table = [
-    #         [0, 0, [0,0], 0],
-    #         [0, 0, [1,0], 1],
-    #         [1, 0, [1,1], 2],
-    #         [1, 0, [0,1], 3],
-    #         [2, 1, [1,1], 0],
-    #         [2, 1, [0,1], 1],
-    #         [3, 1, [0,0], 2],
-    #         [3, 1, [1,0], 3]
-    # ]
-
     State_Table = [
             [0, 0, [0,0], 0],
             [0, 0, [1,1], 1],

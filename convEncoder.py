@@ -5,7 +5,6 @@ from skimage.color import rgb2gray
 from PIL import Image
 import math
 from sklearn.metrics import mean_squared_error
-from BinaryImageSample import Data
 
 def ConvEncoder(BitStream,mu,n):
     k = BitStream.shape[0]
@@ -14,9 +13,6 @@ def ConvEncoder(BitStream,mu,n):
     OutputStream = np.zeros(((k+mu),2))
 
     Input = np.append(BitStream,TeriBits)
-    '''
-
-    '''
     for i in range(Input.shape[0]):
         a = U[0]
         b = U[1]
@@ -40,7 +36,6 @@ def Transmission(ModulatedStream,T,fc,N):
     l,m = ModulatedStream.shape
     n = S.shape[0]
     Output = np.zeros((l,m,n))
-
     for i in range(l):
         for j in range(m):
             Output[i][j] = ModulatedStream[i][j] * S
