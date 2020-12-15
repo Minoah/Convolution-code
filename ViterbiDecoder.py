@@ -11,6 +11,14 @@ def HammingDistance(a,b):
     return np.sum(np.square(a-b))
 
 def ViterbiDecoder(DeModulatedStream,mu):
+    '''
+    Bang trang thai cua bo ma hoa trong vi du o bao cao:
+    O day: 
+        + 0 tuong ung trang thai 00
+        + 1 trang thai 01
+        + 2 trang thai 10
+        + 3 trang thai 11
+    '''
     State_Table = [
             [0, 0, [0,0], 0],
             [0, 0, [1,1], 1],
